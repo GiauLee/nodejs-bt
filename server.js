@@ -1,13 +1,25 @@
-const http = require('http');
+const express = require('express')
 
-const server = http.createServer((req, res) => {
-    console.log('run request ...')
-    res.setHeader('Content-Type', 'text/html');
-    res.write('<h3>Hello world! </h3>');
-    res.write('<h2>from ERIC & HOI DAN IT </h2>');
-    res.end();
+const app = express() // đặt tên là app để sử dụng các tính năng của thằng express
+const port = 3000 // tạo tham số gọi là port, cổng đặt ngẫu nhiên
+
+app.get('/', (req, res) => {
+    res.send('Hello World!! Le Giau and Nodejs')
 })
 
-server.listen(3000, 'localhost', () => {
-    console.log('Node.JS server is running on port: 3000');
+app.get('/about', (req, res) => {
+    res.send('Đây là trang about, trang điều hướng!!')
 })
+
+app.listen(port, () => { // lắng nghe cái cổng mình đã tạo
+    console.log(`Example app listening on port ${port}`)
+})
+/*Bình thường thì là vậy nè
+app.listen(port, function (){
+
+})
+
+app.listen(port, () => {
+
+})
+*/
